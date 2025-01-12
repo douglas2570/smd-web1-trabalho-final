@@ -51,8 +51,9 @@ export class UsuarioController {
   }
 
   @Post('delete/:id')
-  async remove(@Param('id') id: number, @Res() res: Response) {
+  async remove(@Session() session: Record<string, any>, @Param('id') id: number, @Res() res: Response) {
     await this.usuarioService.remove(id);
+    session.usuarioId = null;
     res.redirect('/auth/login');
   }
 }
