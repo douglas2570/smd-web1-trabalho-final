@@ -32,6 +32,11 @@ export class UsuarioService {
   }
 
   async update(id: number, usuario: Usuario): Promise<void> {
+    if (!usuario.senha)
+        delete usuario.senha
+    else
+      usuario.senha = await bcrypt.hash(usuario.senha, 10);   
+
     await this.usuarioRepository.update(id, usuario);
   }
 
