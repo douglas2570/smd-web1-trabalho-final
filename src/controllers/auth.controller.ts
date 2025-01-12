@@ -22,7 +22,7 @@ export class AuthController {
        
     if (await this.validatePassword(senha, usuario.senha)) {
       session.usuarioId = usuario.id;
-      res.redirect(`/usuarios/${usuario.id}`);
+      res.redirect(`/home`);
     } else {
       res.send('Credenciais inválidas');
     }

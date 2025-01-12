@@ -10,6 +10,7 @@ import { UsuarioService } from './services/usuario.service';
 import { UsuarioController } from './controllers/usuario.controller';
 import { AuthController } from './controllers/auth.controller';
 import * as session from 'express-session';
+import { HomeController } from './controllers/home.controller';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import * as session from 'express-session';
     }),
     TypeOrmModule.forFeature([Usuario, Venda, Categoria, Produto, VendaProduto]),
   ],
-  controllers: [AppController, UsuarioController, AuthController],
+  controllers: [AppController, UsuarioController, AuthController, HomeController],
   providers: [UsuarioService],
 })
 
