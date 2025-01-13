@@ -18,16 +18,6 @@ export class UsuarioController {
     return;
   }
 
-  @Get('edit/:id')
-  @Render('usuario/edit')
-  async showEdit(@Param('id') id: number, @Session() session: Record<string, any>, @Res() res: Response) {
-    if (!session.usuarioId) {
-      return res.redirect('/auth/login');
-    }
-    const usuario = await this.usuarioService.findOne(id);
-    return usuario;
-  }
-
   @Get(':id')
   @Render('usuario/profile')
   async findOne(@Param('id') id: number, @Session() session: Record<string, any>, @Res() res: Response) {
@@ -44,12 +34,14 @@ export class UsuarioController {
     res.redirect('/usuarios');
   }
 
+  
   @Post('update/:id')
   async update(@Param('id') id: number, @Body() usuario: Usuario, @Res() res: Response) {
     await this.usuarioService.update(id, usuario);
     res.redirect(`/usuarios/${id}`);
   }
-
+  
+ 
   @Post('delete/:id')
   async remove(@Session() session: Record<string, any>, @Param('id') id: number, @Res() res: Response) {
     await this.usuarioService.remove(id);
