@@ -30,9 +30,11 @@ export class UsuarioController {
 
   @Post()
   async create(@Body() usuario: Usuario, @Res() res: Response) {
-    usuario.administrador = usuario.administrador !== false ? true : false;
     
-    await this.usuarioService.create(usuario);   
+    usuario.administrador = usuario.administrador == 'on' ? true : false;
+     
+    await this.usuarioService.create(usuario);
+
     return res.redirect('/auth/login');
   }
 
