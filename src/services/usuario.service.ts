@@ -28,6 +28,7 @@ export class UsuarioService {
 
     const saltOrRounds = 10; 
     usuario.senha = await bcrypt.hash(usuario.senha, saltOrRounds);
+    
     return this.usuarioRepository.save(usuario);
   }
 
