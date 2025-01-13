@@ -20,8 +20,8 @@ export class Usuario {
   @Column({ length: 255, nullable: true })
   endereco: string;
 
-  @Column({ default: false }) 
-  administrador: boolean;
+  @Column({ default: false, type: 'boolean' })
+  administrador: boolean | string;
 
   @CreateDateColumn()
   criadoEm: Date;
