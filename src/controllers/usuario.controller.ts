@@ -31,7 +31,7 @@ export class UsuarioController {
   @Post()
   async create(@Body() usuario: Usuario, @Res() res: Response) {
     await this.usuarioService.create(usuario);   
-    res.redirect('/usuarios');
+    return res.redirect('/auth/login');
   }
 
   
