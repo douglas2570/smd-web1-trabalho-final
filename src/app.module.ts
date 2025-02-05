@@ -10,7 +10,7 @@ import { UsuarioService } from './services/usuario.service';
 import { UsuarioController } from './controllers/usuario.controller';
 import { AuthController } from './controllers/auth.controller';
 import * as session from 'express-session';
-import { HomeController } from './controllers/home.controller';
+import { CustomerController } from './controllers/customer.controller';
 
 //http://localhost:3000/
 
@@ -28,7 +28,7 @@ import { HomeController } from './controllers/home.controller';
     }),
     TypeOrmModule.forFeature([Usuario, Venda, Categoria, Produto, VendaProduto]),
   ],
-  controllers: [AppController, UsuarioController, AuthController, HomeController],
+  controllers: [AppController, UsuarioController, AuthController, CustomerController],
   providers: [UsuarioService],
 })
 
