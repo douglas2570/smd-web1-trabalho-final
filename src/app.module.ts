@@ -11,6 +11,7 @@ import { UsuarioController } from './controllers/usuario.controller';
 import { AuthController } from './controllers/auth.controller';
 import * as session from 'express-session';
 import { CustomerController } from './controllers/customer.controller';
+import { AdministratorController } from './controllers/administrator.controller';
 
 //http://localhost:3000/
 
@@ -28,7 +29,7 @@ import { CustomerController } from './controllers/customer.controller';
     }),
     TypeOrmModule.forFeature([Usuario, Venda, Categoria, Produto, VendaProduto]),
   ],
-  controllers: [AppController, UsuarioController, AuthController, CustomerController],
+  controllers: [AppController, UsuarioController, AuthController, CustomerController, AdministratorController],
   providers: [UsuarioService],
 })
 
