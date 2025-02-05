@@ -13,6 +13,7 @@ export class AuthController {
     if (session.usuarioId) {
       return res.redirect(`/usuarios/${session.usuarioId}`);
     }
+    
     return;
   }
 
@@ -22,6 +23,7 @@ export class AuthController {
        
     if (await this.validatePassword(senha, usuario.senha)) {
       session.usuarioId = usuario.id;
+      session.administrador = usuario.administrador;
       if(usuario.administrador)
         res.redirect(`/administrator`);
       res.redirect(`/customer`);      

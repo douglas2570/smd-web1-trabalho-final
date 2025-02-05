@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+  </head>
+  <body>
+    <header>     
+      <h1>Area do administrador</h1>
+      <h2>Usuario: {{usuario.nome}}</h2>
+    </header>
+    <main>      
+      <ul>       
+          <li>Produto
+            <ul>
+                <li>
+                  <a href="">Consultar</a>
+                </li>
+              <li>
+                  <a href="">Inserir</a>
+              </li>
+              <li>
+                <a href=""> Alterar </a>
+              </li>
+              <li>
+                <a href=""> Remover </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>Categoria
+            <ul>
+                <li>
+                  <a href="">Consultar</a>
+                </li>
+              <li>
+                  <a href="">Inserir</a>
+              </li>
+              <li>
+                <a href=""> Alterar </a>
+              </li>
+              <li>
+                <a href=""> Remover </a>
+              </li>
+            </ul>
+          </li>
+           
+           
+        <a href="usuarios/{{usuario.id}}">
+          <li>Perfil</li>         
+        </a>        
+      </ul>
+    </main>  
+
+  </body>
+</html>
