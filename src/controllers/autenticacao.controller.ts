@@ -3,13 +3,13 @@ import { UsuarioService } from '../services/usuario.service';
 import * as bcrypt from 'bcrypt';
 import { Response } from 'express';
 
-@Controller('auth')
-export class AuthController {
+@Controller('autenticacao')
+export class AutenticacaoController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Get('login')
-  @Render('auth/login')
-  showLogin(@Session() session: Record<string, any>, @Res() res: Response) {
+  @Render('autenticacao/login')
+  mostrarLogin(@Session() session: Record<string, any>, @Res() res: Response) {
     if (session.usuarioId) {
       return res.redirect(`/usuarios/${session.usuarioId}`);
     }
@@ -19,27 +19,27 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() { login, senha }: { login: string, senha: string }, @Session() session: Record<string, any>, @Res() res: Response) {
-    const usuario = await this.usuarioService.findOneByLogin(login); 
+    const usuario = await this.usuarioService.encontrarUmPorLogin(login); 
        
-    if (await this.validatePassword(senha, usuario.senha)) {
+    if (await this.validarSenha(senha, usuario.senha)) {
       session.usuarioId = usuario.id;
       session.administrador = usuario.administrador;
       if(usuario.administrador)
-        res.redirect(`/administrator`);
-      res.redirect(`/customer`);      
+        res.redirect(`/administrador`);
+      res.redirect(`/cliente`);      
     } else {
       res.send('Credenciais inválidas');
     }
   }
   
-  private async validatePassword(plainPassword: string, hashedPassword: string): Promise<boolean> {
+  private async validarSenha(plainPassword: string, hashedPassword: string): Promise<boolean> {
     return await bcrypt.compare(plainPassword, hashedPassword);
   }
 
   @Post('logout')
   logout(@Session() session: Record<string, any>, @Res() res: Response) {
     session.usuarioId = null;
-    res.redirect('/auth/login');
+    res.redirect('/autenticacao/login');
   }
 
   @Get('session')

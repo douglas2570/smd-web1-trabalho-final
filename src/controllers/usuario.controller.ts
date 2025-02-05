@@ -8,48 +8,46 @@ export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Get()
-  findAll(): Promise<Usuario[]> {
-    return this.usuarioService.findAll();
+  encontrarTodos(): Promise<Usuario[]> {
+    return this.usuarioService.encontrarTudo();
   }
 
-  @Get('create')
-  @Render('usuario/create')
-  showCreate() {
+  @Get('criar')
+  @Render('usuario/criar')
+  mostrarCriar() {
     return;
   }
 
   @Get(':id')
-  @Render('usuario/profile')
-  async findOne(@Param('id') id: number, @Session() session: Record<string, any>, @Res() res: Response) {
+  @Render('usuario/perfil')
+  async encontrarUm(@Param('id') id: number, @Session() session: Record<string, any>, @Res() res: Response) {
     if (!session.usuarioId) {
-      return res.redirect('/auth/login');
+      return res.redirect('/autenticacao/login');
     }
-    const usuario = await this.usuarioService.findOne(id);
+    const usuario = await this.usuarioService.encontrarUm(id);
     return usuario;
   }
 
   @Post()
-  async create(@Body() usuario: Usuario, @Res() res: Response) {
+  async criar(@Body() usuario: Usuario, @Res() res: Response) {
     
     usuario.administrador = usuario.administrador == 'on' ? true : false;
      
-    await this.usuarioService.create(usuario);
+    await this.usuarioService.criar(usuario);
 
-    return res.redirect('/auth/login');
+    return res.redirect('/autenticacao/login');
   }
-
   
-  @Post('update/:id')
-  async update(@Param('id') id: number, @Body() usuario: Usuario, @Res() res: Response) {
-    await this.usuarioService.update(id, usuario);
+  @Post('atualizar/:id')
+  async atualizar(@Param('id') id: number, @Body() usuario: Usuario, @Res() res: Response) {
+    await this.usuarioService.atualizar(id, usuario);
     res.redirect(`/usuarios/${id}`);
   }
-  
- 
-  @Post('delete/:id')
-  async remove(@Session() session: Record<string, any>, @Param('id') id: number, @Res() res: Response) {
-    await this.usuarioService.remove(id);
+   
+  @Post('deletar/:id')
+  async remover(@Session() session: Record<string, any>, @Param('id') id: number, @Res() res: Response) {
+    await this.usuarioService.remover(id);
     session.usuarioId = null;
-    res.redirect('/auth/login');
+    res.redirect('/autenticacao/login');
   }
 }

@@ -8,17 +8,17 @@
     <ul>
       <li>
       {{#if session.usuarioId}}
-        <form action="/auth/logout" method="POST" style="margin-top: 20px;">
+        <form action="/autenticacao/logout" method="POST" style="margin-top: 20px;">
             <button type="submit" style="background-color: #f0ad4e;">Logout</button>
         </form>
       {{else}}
-        <a href="/auth/login" target="_blank">Login</a>
+        <a href="/autenticacao/login" target="_blank">Login</a>
       {{/if}}
     </li>
 
     
       <li>
-        <a href="/usuarios/create" target="_blank">Criar usuario</a>
+        <a href="/usuarios/criar" target="_blank">Criar usuario</a>
       </li>
     </ul>
    

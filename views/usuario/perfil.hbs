@@ -8,7 +8,7 @@
 <body>
   <div class="container">    
     <h1>Perfil do Usuário</h1>
-    <form action="/usuarios/update/{{id}}" method="POST">      
+    <form action="/usuarios/atualizar/{{id}}" method="POST">      
       <input type="text" name="nome" value="{{nome}}" placeholder="Nome" required />
       <input type="email" name="email" value="{{email}}" placeholder="Email" required />
       <input type="text" name="login" value="{{login}}" placeholder="Login" required />
@@ -16,10 +16,10 @@
       <input type="text" name="endereco" value="{{endereco}}" placeholder="Endereço" />
       <button type="submit">Salvar</button>
     </form>
-    <form action="/usuarios/delete/{{id}}" method="POST" style="margin-top: 20px;">
+    <form action="/usuarios/deletar/{{id}}" method="POST" style="margin-top: 20px;">
       <button type="submit" style="background-color: #d9534f;">Excluir Conta</button>
     </form>
-    <form action="/auth/logout" method="POST" style="margin-top: 20px;">
+    <form action="/autenticacao/logout" method="POST" style="margin-top: 20px;">
       <button type="submit" style="background-color: #f0ad4e;">Logout</button>
     </form>
   </div>
