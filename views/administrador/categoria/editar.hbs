@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Editar Categoria</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Editar Categoria</h1>
+    <form action="/categoria/atualizar/{{categoria.id}}" method="POST">
+      <input type="text" name="nome" value="{{categoria.nome}}" placeholder="Nome da Categoria" required />
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
+</body>
+</html>

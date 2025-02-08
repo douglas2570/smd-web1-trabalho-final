@@ -8,13 +8,32 @@
 <body>
   <div class="container">
     <h1>Editar Produto</h1>
-    <form action="/usuarios/{{id}}" method="POST">
-      <input type="hidden" name="_method" value="PUT" />
-      <input type="text" name="nome" value="{{nome}}" placeholder="Nome" required />
-      <input type="email" name="email" value="{{email}}" placeholder="Email" required />
-      <input type="text" name="login" value="{{login}}" placeholder="Login" required />
-      <input type="password" name="senha" placeholder="Senha" />
-      <input type="text" name="endereco" value="{{endereco}}" placeholder="Endereço" />
+    <form action="/produto/atualizar/{{produto.id}}" method="POST">
+	 <div>
+			<label for="descricao">Descrição</label>
+			<input type="text" name="descricao" id="descricao" value="{{produto.descricao}}" placeholder="Descrição do Produto" required />
+	  </div>
+	  
+	  <div>
+			<label for="preco">Preço</label>
+			<input type="number" name="preco" id="preco" value="{{produto.preco}}" step="0.01" placeholder="Preço" required />
+	  </div>
+	  
+	  <div>
+		<label for="quantidade">Quantidade</label>
+		<input type="number" name="quantidade" id="quantidade" value="{{produto.quantidade}}" placeholder="Quantidade" required />
+	  </div>
+      
+      <label for="categoria">Categoria:</label>
+	  <select name="categoria" id="categoria" required>
+	  {{#each categorias}}
+		<option value="{{this.id}}" {{#if this.isSelected}}selected{{/if}}>
+		  {{this.nome}}
+		</option>
+	  {{/each}}
+	</select>
+      
+		
       <button type="submit">Salvar</button>
     </form>
   </div>

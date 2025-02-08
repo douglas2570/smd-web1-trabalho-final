@@ -13,11 +13,14 @@ export class ProdutoService {
 
   encontrarTudo(): Promise<Produto[]> {
     return this.produtoRepository.find();
-  }
-
-  encontrarUm(id: number): Promise<Produto> {
-    return this.produtoRepository.findOneBy({ id });
-  }
+  }  
+  
+  async encontrarUm(id: number): Promise<Produto> {
+  return this.produtoRepository.findOne({
+    where: { id }, // especifica a condição de busca
+    relations: ['categoria'], // carrega a relação com a categoria
+  });
+}
 
   encontrarUmPorNome(name: string): Promise<Produto> { 
     return this.produtoRepository.findOneBy({ name } as FindOptionsWhere<Produto>); 

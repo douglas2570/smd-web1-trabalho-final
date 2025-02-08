@@ -2,49 +2,48 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Produtos</title>
+  <title>Categorias</title>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <header>
-    <h1>Produtos</h1>
+    <h1>Categorias</h1>
   </header>
   <main class="container">
-    <ul>
-      <li>
-        <a href="/produto/criar">Adicionar Produto</a>
-      </li>
+    <ul>        
+        <li>
+            <a href="/categoria/criar">Adicionar Categorias</a>
+        </li>        
     </ul>
 
-    <form action="/produto/pesquisar" method="GET">
+    <form action="/categoria/pesquisar" method="GET">
       <label for="pesquisa">Pesquisar</label>
       <input type="search" id="pesquisa" name="conteudo">
       <button type="submit">Buscar</button>
     </form>
 
     <div>
-      <h2>Lista de Produtos</h2>
-      {{#if produtos.length}}
+      <h2>Lista de Categorias</h2>
+
+      {{#if categorias.length}}
         <table border="1">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Descrição</th>
-              <th>Preço</th>
-              <th>Quantidade</th>             
+              <th>Nome</th>
+              <th>Data de Criação</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody>
-            {{#each produtos}}
+            {{#each categorias}}
               <tr>
                 <td>{{this.id}}</td>
-                <td>{{this.descricao}}</td>
-                <td>{{this.preco}}</td>
-                <td>{{this.quantidade}}</td>                
+                <td>{{this.nome}}</td>
+                <td>{{this.criadoEm}}</td>
                 <td>
-                  <a href="/produto/editar/{{this.id}}">Editar</a> |
-                  <a href="/produto/deletar/{{this.id}}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                  <a href="/categoria/editar/{{this.id}}">Editar</a> |
+                  <a href="/categoria/deletar/{{this.id}}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                 </td>
               </tr>
             {{/each}}

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Categoria } from '../models/Categoria.model';
+import { Categoria } from '../models/categoria.model';
 import { FindOptionsWhere } from 'typeorm';
 
 @Injectable()
